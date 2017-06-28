@@ -27,7 +27,7 @@
 		computerGuess = computerChoice[Math.floor(Math.random()*computerChoice.length)];
 		console.log (computerGuess);
 	}
-	newword();
+	
 
 
 	//when user press a key it records the 'letter' and save the 'letter' to the userGuess. 
@@ -35,28 +35,50 @@
 	// convert Unicode values into characters.
 document.onkeyup = function(event) {
 var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+	
+	if (/[a-z]/.test(userGuess)){
+		
+	}
+	
+	else {
+		alert ("please choose letter only");
+		guessLeft++;
+		loss--;
+		
+		
+	}
+	
 
 	
 
 	//if a letter is not typed yet, then log it in the guessSoFar array
 	// if user already type a letter then alert user choose another letter. 
-	if (guessSoFar.indexOf(userGuess) === -1 && computerChoice.indexOf(userGuess) >=0){
-		guessSoFar[guessSoFar.length]= userGuess;
+	if (guessSoFar.indexOf(userGuess) === -1){
+		guessSoFar.push(userGuess);
+		}
+
+	else {
+		alert ("You already guess this letter, please choose another one");
+		guessLeft++;
+		loss--;
+		
+		
+	}
+		//&& computerChoice.indexOf(userGuess) >=0){
+		//guessSoFar[guessSoFar.length]= userGuess;
 		// guessSoFar.push(userGuess);
 	
 	
-	
-
 		//if userGuess is the same with computerGuess, then record win (#)
 		if (userGuess === computerGuess) {
 			win++;
-			alert ("Your guess is right, let's try a new letter")
+			alert ("Your guess is right, let's try a new letter");
 			newword();
 		}
 
 		//if userGuess is not the same with computerGuess, then record loss (#)
 		else {
-			loss++
+			loss++;
 
 		//if userGuess is not the same with computerGuess then guessLeft decrease 
 			guessLeft -- ;
@@ -67,13 +89,8 @@ var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 			reset();
 		}
 
-	}
+	
 
-
-	// alert the user to chose another letter when the same letter typed in twice
-	else {
-		alert ("Please try another letter");
-	}
 
 
 
@@ -84,4 +101,4 @@ var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     document.querySelector('#guessofar').innerHTML = " Your guess so far: " + guessSoFar;
 
 
-}
+};
