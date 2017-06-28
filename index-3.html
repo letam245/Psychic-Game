@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic game</title>
+</head>
+
+<body>
+
+  <div id="game">
+
+  <h2>The Psychic Game</h2>
+  <p>Guess what letter I am thinking about</p>
+  <p>Wins: <span id = "win"></span></p>
+  <p>Loss: <span id = "loss"></span></p>
+  <p>Number of guess Left: <span id = "guessleft"></span></p>
+  <p>Your guess so far: <span id = "guessosfar"></span></p>
+
+  </div>
+
+  <script type="text/javascript">
+
 	//create an array with all avaiable letters
 	var computerChoice = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -7,8 +30,8 @@
 	var guessLeft = 9;
 	var guessSoFar = [];
 	var computerGuess = '';
-
 	//reset everything to default and start a new game!
+
 	function reset (){
 		guessLeft = 9;
 		loss = 0;
@@ -18,14 +41,16 @@
 		console.log (computerGuess);
 
 	}
+
 	reset();
 
-	//give a new letter when user userGuess is the same with computerGuess
 	function newword (){
 		guessSoFar = [];
 		guessLeft = 9;
 		computerGuess = computerChoice[Math.floor(Math.random()*computerChoice.length)];
 		console.log (computerGuess);
+
+
 	}
 	newword();
 
@@ -33,55 +58,58 @@
 	//when user press a key it records the 'letter' and save the 'letter' to the userGuess. 
 	// convert the typed 'letter' and lower case;
 	// convert Unicode values into characters.
-document.onkeyup = function(event) {
-var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+	document.onkeyup = function(event) {
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
 	
 
 	//if a letter is not typed yet, then log it in the guessSoFar array
 	// if user already type a letter then alert user choose another letter. 
-	if (guessSoFar.indexOf(userGuess) === -1 && computerChoice.indexOf(userGuess) >=0){
-		guessSoFar[guessSoFar.length]= userGuess;
-		// guessSoFar.push(userGuess);
+	if (guessSoFar.indexOf(userGuess) < 0 && computerChoice.indexOf(userGuess) >= 0) {
+		guessSoFar[guessSoFar.length]=userGuess;
+		// if it is a new letter then decrease remaining guesses by 1
+		guessLeft -- ;
 	
-	
-	
+	}
 
 		//if userGuess is the same with computerGuess, then record win (#)
 		if (userGuess === computerGuess) {
 			win++;
 			alert ("Your guess is right, let's try a new letter")
 			newword();
+
+			
 		}
 
-		//if userGuess is not the same with computerGuess, then record loss (#)
-		else {
-			loss++
-
-		//if userGuess is not the same with computerGuess then guessLeft decrease 
-			guessLeft -- ;
-		}
+		
 
 		//if guestLeft is 0 then the game reset to teh default and start a new game
 		if (guessLeft === 0) {
+			loss++
 			reset();
 		}
 
-	}
+	
 
 
 	// alert the user to chose another letter when the same letter typed in twice
-	else {
-		alert ("Please try another letter");
-	}
+	
 
+	
+
+	
 
 
 	//write out in HTML body
-	document.querySelector('#win').innerHTML = "Win: " + win;
-    document.querySelector('#loss').innerHTML = "Loss: " +loss;
-    document.querySelector('#guessleft').innerHTML = "Number of guess left: " + guessLeft;
-    document.querySelector('#guessofar').innerHTML = " Your guess so far: " + guessSoFar;
+	document.getElementById("win").innerHTML = win;
+    document.getElementById("loss").innerHTML = loss;
+    document.getElementById("guessleft").innerHTML = guessLeft;
+    document.getElementById("guessosfar").innerHTML = guessSoFar;
 
 
 }
+
+
+</script>
+</body>
+</html>
