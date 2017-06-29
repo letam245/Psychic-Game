@@ -74,7 +74,7 @@ var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 			guessLeft -- ;
 		}
 
-		//if guestLeft is 0 then the game reset to teh default and start a new game
+		//if guestLeft is 0 then the game reset to the default and start a new game
 		if (guessLeft === 0) {
 			
 			alert ("You lost")
