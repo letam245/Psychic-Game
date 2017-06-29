@@ -6,40 +6,44 @@
   <title>Psychic game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- <!--  <link rel="stylesheet" href="assets/css/style.css"> -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
   <div class="container">
-  	<div class= "row">
-    <div class= "col-md-12 text-center">
-	<h2>Are you a Psychic?</h2>
-    <p>Guess a letter from a - z!</p>
-    </div>
-    </div>
-    <br>
-    <div class="row lead well">
-    <div class="col-md-4">
-    <img src="assets/images/psychic-ball.jpg" class="img-responsive" alt="psychic-ball"/>
-	</div>
-    <div class="col-md-8">
-   	<p id = "win">Wins: </p>
-    <br>
-  	<p id = "loss">Loss: </p>
-    <br>
-  	<p id = "guessleft">Number of guess left: </p>
-    <br>
-  	<p id = "guessofar">Your guess so far:</p>
-	</div>
-  	</div>
+    	<div class= "row">
+        <div class= "col-md-12 top">
+          <h2>Are you a Psychic?</h2>
+          <h4>Guess a letter from a - z!</h4>
+        </div>
+      </div>
+        <br>
+      <div class="row lead box">
+        <div class="col-md-4">
+            <img src="assets/images/psychic-ball.jpg" class="img-responsive" alt="psychic-ball"/>
+        </div>
+        <div class="col-md-8">
+          <p class="text-green" id = "win">Wins: </p>
+        <br>
+          <p class="text-danger" id = "loss">Loss: </p>
+        <br>
+          <p id = "guessleft">Number of guess left: </p>
+        <br>
+          <p id = "guessofar">Your guess so far:</p>
+        </div>
+    	</div>
   </div>
 
-  <footer class="footer text-center navbar-fixed-bottom">
- 
+
+
+<footer class="footer">
+  <div class="container">
     <p class="text-center">&copy; Copyright Tammy Le</p>
- 
+  </div>
 </footer>
+
+
 	
 	<!-- Link to javascript game.js -->
   <script type="text/javascript" src="assets/javascript/game.js"></script>

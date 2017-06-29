@@ -6,13 +6,12 @@
 	var loss = 0;
 	var guessLeft = 9;
 	var guessSoFar = [];
-	var computerGuess = '';
+	
 
 	//reset everything to default and start a new game!
 	function reset (){
 		guessLeft = 9;
-		loss = 0;
-		win = 0;
+		
 		guessSoFar = [];
 		computerGuess = computerChoice[Math.floor(Math.random()*computerChoice.length)];
 		console.log (computerGuess);
@@ -36,21 +35,12 @@
 document.onkeyup = function(event) {
 var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	
-	if (/[a-z]/.test(userGuess)){
-		
-	}
-	
-	else {
+	if (!/[a-z]/.test(userGuess)){
 		alert ("please choose letter only");
 		guessLeft++;
 		loss--;
-		
-		
 	}
 	
-
-	
-
 	//if a letter is not typed yet, then log it in the guessSoFar array
 	// if user already type a letter then alert user choose another letter. 
 	if (guessSoFar.indexOf(userGuess) === -1){
@@ -86,6 +76,8 @@ var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
 		//if guestLeft is 0 then the game reset to teh default and start a new game
 		if (guessLeft === 0) {
+			
+			alert ("You lost")
 			reset();
 		}
 
